@@ -40,6 +40,7 @@ function game() {
 
         let result = playRound(a, b, i);
         console.log(result);
+
         if (result.includes('User won.')) {
         userScore++;
         } else if (result.includes('Computer won.')){
@@ -47,11 +48,11 @@ function game() {
         }
     }
 
-  if (userScore > computerScore) {
-    console.log('User wins!');
-  } else if (userScore < computerScore) {
-    console.log('Computer wins!');
-  } else {
-    console.log("It's a tie! Type 'game()' in console to play again.");
-  }
+    if (userScore > computerScore) {
+        console.log('User wins!');
+    } else if (userScore < computerScore) {
+        console.log('Computer wins!');
+    } else {
+        console.log("It's a tie! Type 'game()' in console to play again.");
+    }
 }
