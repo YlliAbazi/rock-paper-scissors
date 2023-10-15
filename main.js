@@ -3,11 +3,11 @@
 Rock Paper Scissors GAME
 
 What goes into the game: 
-2. Get input from the player to choose his weapon (provide the options) -> function getUserChoice;
-3. Create a random number that makes the choice of the computer weapon -> function getComputerChoice;
-4. Keep track of score and inform the user.
-5. Do the above until one of the players gets five wins
-6. Provide the result of the game.
+1. Get input from the player to choose his weapon (provide the options) -> function getUserChoice;
+2. Generate a random number to help make the choice of the computer weapon -> function getComputerChoice;
+3. Inform the user of result after each round.
+4. Do the above for five round.
+5. Keep track of score and declare the winner.
 
 ## COMBINATIONS ##
 
