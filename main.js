@@ -1,9 +1,13 @@
-console.log('To play Rock-Paper-Scissors type "game()" in the console line and hit Enter.');
+let userScore = 0;
+let computerScore = 0;
+let tie = 0;
+let round = 0;
 
-function getUserChoice() {
-    let userSelection = prompt('What weapon (rock, paper, scissors) do you chose for this round?: ');
-    return userSelection;
-}
+const userScoreDisplay = document.querySelector(".userScore");
+const computerScoreDisplay = document.querySelector(".computerScore");
+const roundDisplay = document.querySelector(".round");
+const roundWinner = document.querySelector(".roundWinner");
+
 
 function getComputerChoice (){
     const choices = ['rock', 'paper', 'scissors'];
@@ -16,26 +20,35 @@ function playRound (userSelection, computerSelection, currentRound) {
     const p = 'paper';
     const s = 'scissors';
 
+    roundDisplay.textContent = `Rounds Played: ${round}`;
+
     if (userSelection === computerSelection) {
-        return `Round ${currentRound}: It's a tie. ${userSelection} = ${computerSelection}`;
+        round++;
+        roundDisplay.textContent = `Rounds Played: ${round}`;
+        return `Round ${currentRound + 1}: It's a tie. ---> ${userSelection} = ${computerSelection}`;
 
     } else if ((userSelection === r && computerSelection === s) || 
                     (userSelection === p && computerSelection === r) || 
                         (userSelection === s && computerSelection === p)) {
-        return `Round ${currentRound}: User won. ${userSelection} beats ${computerSelection}`;
+        round++;
+        roundDisplay.textContent = `Rounds Played: ${round}`;
+        userScore++;
+        userScoreDisplay.textContent = `User Score: ${userScore}`;
+        return `Round ${currentRound + 1}: User won. ---> ${userSelection} beats ${computerSelection}`;
     } else {
-        return `Round ${currentRound}: Computer won. ${computerSelection} beats ${userSelection}`;
+        round++;
+        roundDisplay.textContent = `Rounds Played: ${round}`;
+        computerScore++;
+        computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+        return `Round ${currentRound + 1}: Computer won. ---> ${computerSelection} beats ${userSelection}`;
     } 
 }
 
 function game() {
-    let userScore = 0;
-    let computerScore = 0;
-
   
     for (let i = 1; i <= 5; i++) {
 
-        const a = getUserChoice();
+        
         const b = getComputerChoice();
 
         let result = playRound(a, b, i);
@@ -56,3 +69,41 @@ function game() {
         console.log("It's a tie! Type 'game()' in console to play again.");
     }
 }
+
+
+const rockSelector = document.querySelector(".rockSelector");
+const paperSelector = document.querySelector(".paperSelector");
+const scissorsSelector = document.querySelector(".scissorsSelector");
+
+let userChoice;
+
+rockSelector.addEventListener('click', e => {
+    userChoice = e.target.textContent.toLowerCase();
+    roundWinner.textContent = playRound(userChoice, getComputerChoice(), round);
+});
+
+paperSelector.addEventListener('click', e => {
+    userChoice = e.target.textContent.toLowerCase();
+    roundWinner.textContent = playRound(userChoice, getComputerChoice(), round);
+});
+
+scissorsSelector.addEventListener('click', e => {
+    userChoice = e.target.textContent.toLowerCase();
+    roundWinner.textContent = playRound(userChoice, getComputerChoice(), round);
+});
+
+
+
+//     declareWinner.textContent = result;
+
+//     if (result.includes("User won.")) {
+//         userScore++;
+//         round++;
+//     } else if (result.includes("Computer won.")) {
+//         computerScore++;
+//         round++;
+//     } else {
+//         round++
+//     }
+
+//     containerDiv.appendChild(declareWinner);
